@@ -45,10 +45,10 @@ namespace WindowsFormsApp4
             const int NRoots = 3;
 
             double SquareRootof3 = Math.Sqrt(3);
-            // the 3 cubic roots of 1
+            // 3 koreni od 1
             List<Complex> CubicUnity = new List<Complex>(NRoots)
                         { new Complex(1, 0), new Complex(-0.5, -SquareRootof3 / 2.0), new Complex(-0.5, SquareRootof3 / 2.0) };
-            // intermediate calculations
+            // presmetki
             double DELTA = 18 * a * b * c * d - 4 * b * b * b * d + b * b * c * c - 4 * a * c * c * c - 27 * a * a * d * d;
             double DELTA0 = b * b - 3 * a * c;
             double DELTA1 = 2 * b * b * b - 9 * a * b * c + 27 * a * a * d;
@@ -79,7 +79,7 @@ namespace WindowsFormsApp4
                 e.Cancel = true;
                 errorProvider1.SetError(TB, "Entry must be numeric.");
             }
-            finally //finally I use finally!
+            finally 
             {
                 switch (TB.Tag.ToString())
                 {
@@ -92,7 +92,7 @@ namespace WindowsFormsApp4
         }
         private void Txb_Validated(object sender, EventArgs e)
         {
-            // to remove the errorprovider glyph set the error message to ""
+            // za odstranuvanje i pokazuvanje na greski ""
             errorProvider1.SetError(sender as TextBox, "");
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -105,7 +105,7 @@ namespace WindowsFormsApp4
             CTxb.Validated += new EventHandler(Txb_Validated);
             DTxb.Validating += new CancelEventHandler(Txb_Validating);
             DTxb.Validated += new EventHandler(Txb_Validated);
-            // Initialize coefficients
+            // citanje na koeficienti
             Coeff.A = 0.0;
             Coeff.B = 0.0;
             Coeff.C = 0.0;
@@ -114,12 +114,12 @@ namespace WindowsFormsApp4
 
         private void SolveBtn_Click_1(object sender, EventArgs e)
         {
-            // Let's call anything smaller than this zero
+            // povikuvanje na site broevi pomali od 0
             const double small = 1E-15;
             double Re;
             double Im;
 
-            //calculate roots
+            //presmetka na koren
             List<Complex> Roots = SolveCubic(Coeff.A, Coeff.B, Coeff.C, Coeff.D);
 
             Re = Math.Abs(Roots[0].Real) < small ? 0.0 : Roots[0].Real;
@@ -140,12 +140,12 @@ namespace WindowsFormsApp4
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // Let's call anything smaller than this zero
+            // povikuvanje na site broevi pomali od 0
             const double small = 1E-15;
             double Re;
             double Im;
 
-            //calculate roots
+            //presmetka na koren
             List<Complex> Roots = SolveCubic(Coeff.A, Coeff.B, Coeff.C, Coeff.D);
 
             Re = Math.Abs(Roots[0].Real) < small ? 0.0 : Roots[0].Real;
